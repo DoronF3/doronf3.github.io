@@ -19,3 +19,4 @@ Hi, I'm Doron! I'm a Backend Engineer with expertise in web development, databas
 
 Feel free to reach out if you're interested in collaboration or just want to chat about backend development!
 
+<link rel="stylesheet" type="text/css" href="style.css">
