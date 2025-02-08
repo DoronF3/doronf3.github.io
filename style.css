@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: #00bfff; /* Light blue links */
+}
+
+a:hover {
+    color: #ff4500; /* Orange on hover */
+}
