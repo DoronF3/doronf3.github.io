@@ -1,7 +1,3 @@
----
-title: Welcome
----
-
 # Welcome to My Website
 
 Hi, I'm Doron! I'm a Backend Engineer with expertise in web development, database management, and API design. I enjoy building scalable backend systems and optimizing performance using modern technologies.
