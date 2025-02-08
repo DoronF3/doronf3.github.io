@@ -1,3 +1,7 @@
+---
+title: Welcome
+---
+
 # Welcome to My Website
 
 Hi, I'm Doron! I'm a Backend Engineer with expertise in web development, database management, and API design. I enjoy building scalable backend systems and optimizing performance using modern technologies.
@@ -15,9 +19,7 @@ Hi, I'm Doron! I'm a Backend Engineer with expertise in web development, databas
 - **Web Development Code Structure**: Writing about best practices in backend architecture.
 
 ## Get in Touch
-- [GitHub](https://github.com/DoronF3)
-- [LinkedIn](https://www.linkedin.com/in/DoronF3)
-- [Email](mailto:doronfi3@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white)](https://github.com/DoronF3) [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/DoronF3) [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:doronfi3@gmail.com)
 
 Feel free to reach out if you're interested in collaboration or just want to chat about backend development!
 
