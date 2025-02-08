@@ -19,9 +19,9 @@ Hi, I'm Doron! I'm a Backend Engineer with expertise in web development, databas
 - **Web Development Code Structure**: Writing about best practices in backend architecture.
 
 ## Get in Touch
-- [GitHub](https://github.com/your-github-username)
-- [LinkedIn](https://www.linkedin.com/in/your-linkedin-profile)
-- [Email](mailto:your-email@example.com)
+- [GitHub](https://github.com/DoronF3)
+- [LinkedIn](https://www.linkedin.com/in/DoronF3)
+- [Email](mailto:doronfi3@gmail.com)
 
 Feel free to reach out if you're interested in collaboration or just want to chat about backend development!
 
