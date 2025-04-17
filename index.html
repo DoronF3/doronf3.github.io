@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doron | Backend Engineer</title>
+    <title>Developer Portfolio</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -12,6 +12,34 @@
             --light: #f8fafc;
             --gray: #64748b;
             --light-gray: #e2e8f0;
+            --dark: #0f172a;
+            --darker: #020617;
+            --text-light: #f8fafc;
+            --text-dark: #0f172a;
+            --card-bg-light: #ffffff;
+            --card-bg-dark: #1e293b;
+            --border-light: #e2e8f0;
+            --border-dark: #334155;
+        }
+
+        [data-theme="light"] {
+            --background: var(--light);
+            --text: var(--text-dark);
+            --card-bg: var(--card-bg-light);
+            --header-bg: var(--secondary);
+            --header-text: var(--text-light);
+            --border-color: var(--border-light);
+            --alternate-bg: #f1f5f9;
+        }
+        
+        [data-theme="dark"] {
+            --background: var(--dark);
+            --text: var(--text-light);
+            --card-bg: var(--card-bg-dark);
+            --header-bg: var(--darker);
+            --header-text: var(--text-light);
+            --border-color: var(--border-dark);
+            --alternate-bg: #0f172a;
         }
 
         * {
@@ -19,18 +47,19 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--secondary);
+            background-color: var(--background);
+            color: var(--text);
             line-height: 1.6;
         }
 
         header {
-            background-color: var(--secondary);
+            background-color: var(--header-bg);
             padding: 2rem 0;
-            color: white;
+            color: var(--header-text);
             position: relative;
             overflow: hidden;
         }
@@ -64,23 +93,48 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: white;
+            color: var(--header-text);
             text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--header-text);
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            margin-left: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
         }
 
         .hero {
@@ -110,6 +164,8 @@
             font-weight: 500;
             transition: background-color 0.3s;
             margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -173,67 +229,68 @@
         }
 
         .skill-tag {
-            background-color: var(--light-gray);
+            background-color: var(--border-color);
             padding: 0.5rem 1rem;
             border-radius: 2rem;
             font-size: 0.9rem;
         }
 
-        .projects-grid {
+        .projects-grid, .linkedin-grid, .github-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .project-card {
-            background-color: white;
+        .card {
+            background-color: var(--card-bg);
             border-radius: 0.5rem;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            border: 1px solid var(--border-color);
         }
 
-        .project-card:hover {
+        .card:hover {
             transform: translateY(-5px);
         }
 
         .project-img {
             width: 100%;
             height: 200px;
-            background-color: var(--light-gray);
+            background-color: var(--border-color);
             position: relative;
         }
 
-        .project-content {
+        .card-content {
             padding: 1.5rem;
         }
 
-        .project-title {
+        .card-title {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
 
-        .project-tags {
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin: 1rem 0;
         }
 
-        .project-tag {
-            background-color: var(--light-gray);
+        .card-tag {
+            background-color: var(--border-color);
             padding: 0.25rem 0.75rem;
             border-radius: 2rem;
             font-size: 0.8rem;
         }
 
-        .project-links {
+        .card-links {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
 
-        .project-link {
+        .card-link {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
@@ -245,10 +302,11 @@
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -264,9 +322,11 @@
         .form-control {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid var(--light-gray);
+            border: 1px solid var(--border-color);
             border-radius: 0.25rem;
             font-size: 1rem;
+            background-color: var(--background);
+            color: var(--text);
         }
 
         textarea.form-control {
@@ -274,9 +334,95 @@
             resize: vertical;
         }
 
+        .linkedin-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .linkedin-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .linkedin-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+        }
+
+        .linkedin-info {
+            flex: 1;
+        }
+
+        .linkedin-name {
+            font-weight: 600;
+        }
+
+        .linkedin-date {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .linkedin-content {
+            margin-bottom: 1rem;
+        }
+
+        .linkedin-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .linkedin-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .github-commit {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .commit-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .commit-hash {
+            font-family: monospace;
+            background-color: var(--border-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .commit-date {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .commit-repo {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .commit-message {
+            margin-bottom: 0.75rem;
+        }
+
         footer {
-            background-color: var(--secondary);
-            color: white;
+            background-color: var(--header-bg);
+            color: var(--header-text);
             padding: 2rem 0;
             text-align: center;
         }
@@ -289,13 +435,17 @@
         }
 
         .social-link {
-            color: white;
+            color: var(--header-text);
             font-size: 1.5rem;
             transition: color 0.3s;
         }
 
         .social-link:hover {
             color: var(--primary);
+        }
+
+        .alternate-bg {
+            background-color: var(--alternate-bg);
         }
 
         @media (max-width: 768px) {
@@ -307,7 +457,7 @@
                 flex-direction: column;
             }
             
-            .projects-grid {
+            .projects-grid, .linkedin-grid, .github-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -318,16 +468,21 @@
         <div class="header-bg"></div>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Doron Firman</a>
+                <a href="#" class="logo">Doron | Backend Engineer</a>
                 <div class="nav-links">
                     <a href="#about">About</a>
                     <a href="#projects">Projects</a>
+                    <a href="#linkedin">LinkedIn</a>
+                    <a href="#github">GitHub</a>
                     <a href="#contact">Contact</a>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
                 </div>
             </nav>
             
             <div class="hero">
-                <h1>Backend Developer & System Architect</h1>
+                <h1>Backend Developer</h1>
                 <p>Building robust, scalable solutions with modern technologies</p>
                 <a href="#contact" class="btn">Get In Touch</a>
             </div>
@@ -351,13 +506,11 @@
                             <span class="skill-tag">Node.js</span>
                             <span class="skill-tag">Python</span>
                             <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Go</span>
                             <span class="skill-tag">SQL/NoSQL</span>
                             <span class="skill-tag">RESTful APIs</span>
-                            <span class="skill-tag">GraphQL</span>
                             <span class="skill-tag">Docker</span>
                             <span class="skill-tag">Kubernetes</span>
-                            <span class="skill-tag">AWS/GCP</span>
+                            <span class="skill-tag">AWS</span>
                             <span class="skill-tag">CI/CD</span>
                             <span class="skill-tag">Microservices</span>
                         </div>
@@ -367,66 +520,228 @@
         </div>
     </section>
 
-    <section id="projects" class="projects" style="background-color: #f1f5f9;">
+    <section id="projects" class="projects alternate-bg">
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="card">
                     <div class="project-img">
                         <img src="/api/placeholder/400/200" alt="Project 1">
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Distributed Task Queue</h3>
+                    <div class="card-content">
+                        <h3 class="card-title">Distributed Task Queue</h3>
                         <p>A high-performance distributed task queue system built with Go, supporting job prioritization and fault tolerance.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Go</span>
-                            <span class="project-tag">Redis</span>
-                            <span class="project-tag">Distributed Systems</span>
+                        <div class="card-tags">
+                            <span class="card-tag">Go</span>
+                            <span class="card-tag">Redis</span>
+                            <span class="card-tag">Distributed Systems</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Demo</a>
-                            <a href="#" class="project-link">GitHub</a>
+                        <div class="card-links">
+                            <a href="#" class="card-link">Demo</a>
+                            <a href="#" class="card-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="card">
                     <div class="project-img">
                         <img src="/api/placeholder/400/200" alt="Project 2">
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-commerce API Gateway</h3>
+                    <div class="card-content">
+                        <h3 class="card-title">E-commerce API Gateway</h3>
                         <p>A scalable API gateway that handles authentication, rate limiting, and request routing for a microservices-based e-commerce platform.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">Express</span>
-                            <span class="project-tag">MongoDB</span>
+                        <div class="card-tags">
+                            <span class="card-tag">Node.js</span>
+                            <span class="card-tag">Express</span>
+                            <span class="card-tag">MongoDB</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Case Study</a>
-                            <a href="#" class="project-link">GitHub</a>
+                        <div class="card-links">
+                            <a href="#" class="card-link">Case Study</a>
+                            <a href="#" class="card-link">GitHub</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="card">
                     <div class="project-img">
                         <img src="/api/placeholder/400/200" alt="Project 3">
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Real-time Analytics Pipeline</h3>
+                    <div class="card-content">
+                        <h3 class="card-title">Real-time Analytics Pipeline</h3>
                         <p>An event-driven analytics pipeline processing millions of events daily, with real-time dashboarding capabilities.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Kafka</span>
-                            <span class="project-tag">Elasticsearch</span>
+                        <div class="card-tags">
+                            <span class="card-tag">Python</span>
+                            <span class="card-tag">Kafka</span>
+                            <span class="card-tag">Elasticsearch</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Documentation</a>
-                            <a href="#" class="project-link">GitHub</a>
+                        <div class="card-links">
+                            <a href="#" class="card-link">Documentation</a>
+                            <a href="#" class="card-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="linkedin" class="linkedin">
+        <div class="container">
+            <h2 class="section-title">Recent LinkedIn Posts</h2>
+            <div class="linkedin-grid">
+                <!-- LinkedIn Post 1 -->
+                <div class="card linkedin-card">
+                    <div class="card-content">
+                        <div class="linkedin-header">
+                            <div class="linkedin-avatar">
+                                <img src="/api/placeholder/48/48" alt="Profile Picture">
+                            </div>
+                            <div class="linkedin-info">
+                                <div class="linkedin-name">DevName</div>
+                                <div class="linkedin-date">3 days ago</div>
+                            </div>
+                        </div>
+                        <div class="linkedin-content">
+                            <p>Excited to share that I've just deployed a new microservice architecture that reduced our API response time by 60%! #BackendDevelopment #Performance #Microservices</p>
+                        </div>
+                        <div class="linkedin-stats">
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                87
+                            </div>
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                23
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn Post 2 -->
+                <div class="card linkedin-card">
+                    <div class="card-content">
+                        <div class="linkedin-header">
+                            <div class="linkedin-avatar">
+                                <img src="/api/placeholder/48/48" alt="Profile Picture">
+                            </div>
+                            <div class="linkedin-info">
+                                <div class="linkedin-name">DevName</div>
+                                <div class="linkedin-date">1 week ago</div>
+                            </div>
+                        </div>
+                        <div class="linkedin-content">
+                            <p>Just published a technical deep dive on how we implemented distributed tracing across our microservices using OpenTelemetry. Check out the link in the comments! #DistributedSystems #Observability</p>
+                        </div>
+                        <div class="linkedin-stats">
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                124
+                            </div>
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                36
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn Post 3 -->
+                <div class="card linkedin-card">
+                    <div class="card-content">
+                        <div class="linkedin-header">
+                            <div class="linkedin-avatar">
+                                <img src="/api/placeholder/48/48" alt="Profile Picture">
+                            </div>
+                            <div class="linkedin-info">
+                                <div class="linkedin-name">DevName</div>
+                                <div class="linkedin-date">2 weeks ago</div>
+                            </div>
+                        </div>
+                        <div class="linkedin-content">
+                            <p>I'll be speaking at the Backend Engineering Summit next month about building fault-tolerant systems. Looking forward to sharing some of the lessons we've learned the hard way! #FaultTolerance #Resilience #Engineering</p>
+                        </div>
+                        <div class="linkedin-stats">
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                156
+                            </div>
+                            <div class="linkedin-stat">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                42
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="github" class="github alternate-bg">
+        <div class="container">
+            <h2 class="section-title">Recent GitHub Activity</h2>
+            <div class="github-grid">
+                <!-- GitHub Commit 1 -->
+                <div class="card">
+                    <div class="card-content github-commit">
+                        <div class="commit-repo">distributed-task-queue</div>
+                        <div class="commit-header">
+                            <span class="commit-hash">a7e9f23</span>
+                            <span>Add Redis cluster support</span>
+                        </div>
+                        <p class="commit-message">Implemented Redis cluster support for horizontal scaling with automatic sharding and failover capabilities.</p>
+                        <div class="commit-date">April 15, 2025</div>
+                        <div class="card-links">
+                            <a href="#" class="card-link">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GitHub Commit 2 -->
+                <div class="card">
+                    <div class="card-content github-commit">
+                        <div class="commit-repo">api-gateway</div>
+                        <div class="commit-header">
+                            <span class="commit-hash">b2d4c18</span>
+                            <span>Optimize rate limiter</span>
+                        </div>
+                        <p class="commit-message">Optimized the rate limiting middleware to reduce memory usage by 40% and improve throughput by implementing a sliding window algorithm.</p>
+                        <div class="commit-date">April 12, 2025</div>
+                        <div class="card-links">
+                            <a href="#" class="card-link">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GitHub Commit 3 -->
+                <div class="card">
+                    <div class="card-content github-commit">
+                        <div class="commit-repo">analytics-pipeline</div>
+                        <div class="commit-header">
+                            <span class="commit-hash">e5f8d72</span>
+                            <span>Add Prometheus metrics</span>
+                        </div>
+                        <p class="commit-message">Added comprehensive Prometheus metrics for better observability and alerting capabilities across the event processing pipeline.</p>
+                        <div class="commit-date">April 10, 2025</div>
+                        <div class="card-links">
+                            <a href="#" class="card-link">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GitHub Commit 4 -->
+                <div class="card">
+                    <div class="card-content github-commit">
+                        <div class="commit-repo">microservice-chassis</div>
+                        <div class="commit-header">
+                            <span class="commit-hash">f93a625</span>
+                            <span>Update dependency injection</span>
+                        </div>
+                        <p class="commit-message">Refactored the dependency injection container to support more flexible configuration and improve startup performance.</p>
+                        <div class="commit-date">April 8, 2025</div>
+                        <div class="card-links">
+                            <a href="#" class="card-link">View on GitHub</a>
                         </div>
                     </div>
                 </div>
