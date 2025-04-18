@@ -62,8 +62,9 @@
        header nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; /* Ensures vertical centering */
             padding: 1rem 0;
+            height: 60px; /* Set a fixed height for consistency */
         }
 
         .header-bg {
@@ -93,17 +94,20 @@
         }
 
         .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--header-text);
             text-decoration: none;
+            display: flex; /* Makes the logo a flex container */
+            align-items: center; /* Centers the text vertically */
+            height: 100%; /* Takes full height of parent */
         }
         
         /* Desktop navigation styles */
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 1.5rem;
+            align-items: center; /* Ensures vertical alignment */
+            gap: 1.5rem; /* Consistent spacing between links */
         }
         
         .nav-links a {
@@ -111,6 +115,10 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            padding: 0;
+            height: auto; /* Let height be determined naturally */
+            display: flex; /* Makes each link a flex container */
+            align-items: center; /* Centers text vertically */
         }
         
         .nav-links a:hover {
@@ -119,18 +127,19 @@
         
 
         .theme-toggle {
+            margin: 0;
+            padding: 0.5rem;
             background: none;
             border: none;
             color: var(--header-text);
             cursor: pointer;
-            margin-left: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
+            height: 36px; /* Fixed height */
+            width: 36px; /* Fixed width */
+            border-radius: 4px;
+            position: relative;
         }
 
         .theme-toggle:hover {
@@ -459,64 +468,199 @@
             background-color: var(--alternate-bg);
         }
 
+        /* Hamburger menu styles */
+        .hamburger-menu {
+            display: none; /* Hidden on desktop by default */
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001; /* Higher than the nav drawer */
+            width: 40px;
+            height: 40px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Hamburger lines */
+        .hamburger-line {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 22px;
+            background-color: var(--header-text);
+            left: 9px;
+            transition: all 0.3s ease;
+        }
+
+        /* Position each line */
+        .hamburger-line.line1 {
+            top: 14px;
+        }
+        .hamburger-line.line2 {
+            top: 19px;
+        }
+        .hamburger-line.line3 {
+            top: 24px;
+        }
+
+        /* Active state (X transformation) */
+        .hamburger-menu.active .hamburger-line.line1 {
+            transform: translateY(5px) rotate(45deg);
+        }
+        .hamburger-menu.active .hamburger-line.line2 {
+            opacity: 0;
+        }
+        .hamburger-menu.active .hamburger-line.line3 {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
         @media (max-width: 768px) {
             .hamburger-menu {
                 display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
-            /* Transform hamburger to X when menu is open */
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
+            .hamburger-menu:hover {
+                background-color: rgba(255, 255, 255, 0.2);
             }
             
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-            
-            /* Mobile drawer navigation */
+            /* Mobile drawer animation improvement */
             .nav-links {
                 position: fixed;
                 right: -100%;
                 top: 0;
                 flex-direction: column;
                 background-color: var(--header-bg);
-                width: 70%;
+                width: 60%;
                 height: 100vh;
-                padding: 4rem 2rem 2rem;
+                padding: 4rem 1.5rem 1.5rem;
                 transition: right 0.3s ease;
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
+                align-items: flex-start; /* Align items to left in mobile view */
+                gap: 1.25rem; /* Increase space between items in mobile */
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+                width: 100%;
             }
             
             .nav-links.active {
                 right: 0;
             }
             
-            /* Add space between nav links in mobile */
-            .nav-links a {
-                padding: 0.8rem 0;
-            }
-            
-            /* Position theme toggle in mobile menu */
+            /* Fix theme toggle position in mobile */
             .theme-toggle {
                 margin-top: 1rem;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-                background: var(--primary);
+                align-self: center;
             }
             
-            .about-content {
-                flex-direction: column;
+            /* Prevent body scrolling when menu is open */
+            body.menu-open {
+                overflow: hidden;
             }
             
-            .projects-grid, .linkedin-grid, .github-grid {
-                grid-template-columns: 1fr;
+            /* Add backdrop when menu is open */
+            .menu-backdrop {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+                z-index: 999;
             }
+            
+            .menu-backdrop.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        /* Fix for inconsistent nav links spacing */
+        .nav-links a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+        
+        /* Add active state for current section */
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        /* Add focus states for accessibility */
+        .nav-links a:focus,
+        .theme-toggle:focus,
+        .hamburger-menu:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Make the nav drawer narrower */
+        .nav-links {
+            width: 40%; /* Reduced from 70% */
+            padding: 3.5rem 1.5rem 1.5rem; /* Adjusted padding */
+        }
+        
+        /* Fix theme toggle position and centering in mobile */
+        .theme-toggle {
+            margin: 1.5rem auto 0; /* Center horizontally with auto margins */
+            align-self: center; /* Center in the flex container */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Ensure SVG icons are perfectly centered */
+        .theme-toggle svg {
+            position: absolute; /* Position absolutely within the button */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Perfect centering */
+        }
+        
+        /* Make backdrop smaller/lighter */
+        .menu-backdrop {
+            background-color: rgba(0, 0, 0, 0.3); /* Lighter background (was 0.5) */
+        }
+        
+        /* Add a transition to the hamburger menu for better UX */
+        .hamburger-menu {
+            transition: background-color 0.2s ease;
+        }
+        
+        /* Add active state for hamburger button */
+        .hamburger-menu.active {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+    
+
+        /* Improve positioning of SVG icons */
+        .theme-toggle {
+            position: relative; /* Create positioning context for absolute children */
+        }
+
+        /* Ensure SVG icons don't shift layout */
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Fix for SVG icons in buttons */
+        button svg {
+            pointer-events: none;
         }
 
         [data-theme="light"] .icon-sun {

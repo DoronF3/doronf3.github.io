@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+    <meta name="description" content="Doron Firman - Backend Engineer specializing in scalable solutions">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="style.css">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="my-image.jpg" as="image">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doron | Backend Engineer</title>
@@ -8,23 +14,17 @@
 </head>
 <body>
     <header class="sticky-header">
-        <div class="header-bg"></div>
+        <div class="header-bg" aria-hidden="true"></div>
         <div class="container">
             <nav>
                 <a href="#" class="logo">Doron Firman</a>
                 
                 <!-- Hamburger menu button for mobile -->
-                <button class="hamburger-menu" id="menu-toggle" aria-label="Toggle navigation menu">
-                  <!-- SVG Icon -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                       stroke-linejoin="round" class="lucide lucide-menu">
-                    <line x1="4" y1="6" x2="20" y2="6" />
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <line x1="4" y1="18" x2="20" y2="18" />
-                  </svg>
+                <button class="hamburger-menu" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+                    <span class="hamburger-line line1"></span>
+                    <span class="hamburger-line line2"></span>
+                    <span class="hamburger-line line3"></span>
                 </button>
-
                 
                 <!-- Navigation links and theme toggle -->
                 <div class="nav-links" id="nav-drawer">
@@ -39,8 +39,6 @@
                     </button>
                 </div>
             </nav>
-            
-            
         </div>
     </header>
 
@@ -55,7 +53,7 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                <div class="about-img">
-                    <img src="my-image.jpg" alt="Developer Profile">
+                    <img src="my-image.jpg" alt="Developer Profile" loading="lazy">
                 </div>
                 <div class="about-text">
                     <p>Hi there! I'm an experienced backend engineer passionate about creating efficient, scalable solutions. With a strong foundation in system architecture and database design, I specialize in building the robust backend systems that power modern applications.</p>
@@ -157,7 +155,7 @@
                     <div class="card-content">
                         <div class="linkedin-header">
                             <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture">
+                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
                             </div>
                             <div class="linkedin-info">
                                 <div class="linkedin-name">Doron Firman</div>
@@ -185,7 +183,7 @@
                     <div class="card-content">
                         <div class="linkedin-header">
                             <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture">
+                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
                             </div>
                             <div class="linkedin-info">
                                 <div class="linkedin-name">Doron Firman</div>
@@ -213,7 +211,7 @@
                     <div class="card-content">
                         <div class="linkedin-header">
                             <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture">
+                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
                             </div>
                             <div class="linkedin-info">
                                 <div class="linkedin-name">Doron Firman</div>
@@ -243,69 +241,23 @@
         <div class="container">
             <h2 class="section-title">Recent GitHub Activity</h2>
             <div class="github-grid">
-                <!-- GitHub Commit 1 -->
-                <div class="card">
-                    <div class="card-content github-commit">
-                        <div class="commit-repo">distributed-task-queue</div>
-                        <div class="commit-header">
-                            <span class="commit-hash">a7e9f23</span>
-                            <span>Add Redis cluster support</span>
-                        </div>
-                        <p class="commit-message">Implemented Redis cluster support for horizontal scaling with automatic sharding and failover capabilities.</p>
-                        <div class="commit-date">April 15, 2025</div>
-                        <div class="card-links">
-                            <a href="#" class="card-link">View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- GitHub Commit 2 -->
-                <div class="card">
-                    <div class="card-content github-commit">
-                        <div class="commit-repo">api-gateway</div>
-                        <div class="commit-header">
-                            <span class="commit-hash">b2d4c18</span>
-                            <span>Optimize rate limiter</span>
-                        </div>
-                        <p class="commit-message">Optimized the rate limiting middleware to reduce memory usage by 40% and improve throughput by implementing a sliding window algorithm.</p>
-                        <div class="commit-date">April 12, 2025</div>
-                        <div class="card-links">
-                            <a href="#" class="card-link">View on GitHub</a>
+                <!-- GitHub Commits Loop -->
+                <template id="commit-template">
+                    <div class="card">
+                        <div class="card-content github-commit">
+                            <div class="commit-repo"></div>
+                            <div class="commit-header">
+                                <span class="commit-hash"></span>
+                                <span class="commit-title"></span>
+                            </div>
+                            <p class="commit-message"></p>
+                            <div class="commit-date"></div>
+                            <div class="card-links">
+                                <a href="#" class="card-link">View on GitHub</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- GitHub Commit 3 -->
-                <div class="card">
-                    <div class="card-content github-commit">
-                        <div class="commit-repo">analytics-pipeline</div>
-                        <div class="commit-header">
-                            <span class="commit-hash">e5f8d72</span>
-                            <span>Add Prometheus metrics</span>
-                        </div>
-                        <p class="commit-message">Added comprehensive Prometheus metrics for better observability and alerting capabilities across the event processing pipeline.</p>
-                        <div class="commit-date">April 10, 2025</div>
-                        <div class="card-links">
-                            <a href="#" class="card-link">View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- GitHub Commit 4 -->
-                <div class="card">
-                    <div class="card-content github-commit">
-                        <div class="commit-repo">microservice-chassis</div>
-                        <div class="commit-header">
-                            <span class="commit-hash">f93a625</span>
-                            <span>Update dependency injection</span>
-                        </div>
-                        <p class="commit-message">Refactored the dependency injection container to support more flexible configuration and improve startup performance.</p>
-                        <div class="commit-date">April 8, 2025</div>
-                        <div class="card-links">
-                            <a href="#" class="card-link">View on GitHub</a>
-                        </div>
-                    </div>
-                </div>
+                </template>
             </div>
         </div>
     </section>
@@ -346,65 +298,6 @@
             <p>&copy; 2025 Doron Firman. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        // Function to toggle between light and dark theme
-        function toggleTheme() {
-            // Get the current theme from the HTML element or default to 'light'
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            
-            // Toggle to the opposite theme
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            // Set the new theme
-            document.documentElement.setAttribute('data-theme', newTheme);
-            
-            // Save the user's preference to localStorage for persistence across page loads
-            localStorage.setItem('theme', newTheme);
-        }
-        
-        // Add event listener to the theme toggle button
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            
-            // Set initial theme based on user's previous preference or system preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // If no saved preference, check system preference
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-            
-            // Add click event to toggle theme
-            themeToggle.addEventListener('click', toggleTheme);
-        });
-        
-        // Mobile menu functionality
-        const menuToggle = document.getElementById('menu-toggle');
-        const navDrawer = document.getElementById('nav-drawer');
-        
-        // Toggle mobile menu
-        menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            navDrawer.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = navDrawer.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                navDrawer.classList.remove('active');
-            });
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navDrawer.contains(event.target) && !menuToggle.contains(event.target) && navDrawer.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                navDrawer.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
