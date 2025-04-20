@@ -69,12 +69,14 @@ class GitHubService {
     async getLatestCommits(limit = 3) {
       try {
         // Method 1: Use the events API (faster but limited to recent activity)
-        const activityCommits = await this.getUserActivity();
+        const activityCommits = await this.getUserActivity(20); // Fetch more events to have enough commits
         
-        if (activityCommits.length >= limit) {
+        if (activityCommits.length > 0) {
           return this.formatCommits(activityCommits, limit);
         }
         
+        // If no commits found, return empty array
+        return [];
       } catch (error) {
         console.error('Error fetching latest commits:', error);
         return [];
@@ -113,7 +115,7 @@ class GitHubService {
       
       return uniqueCommits;
     }
-  }
+  }    
 
 // Theme toggling functionality
 function toggleTheme() {
@@ -302,7 +304,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             clone.querySelector('.commit-repo').textContent = commit.repo;
             clone.querySelector('.commit-hash').textContent = commit.hash;
-            clone.querySelector('.commit-title').textContent = commit.title;
             
             // Limit commit message length with ellipsis if too long
             const message = commit.message;
@@ -323,9 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error rendering GitHub commits:', error);
         }
     }
-  
-    // Call the function to render the commits
-    renderGitHubCommits();
 
     const linkedinPosts = [
         {
@@ -389,4 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Form submitted');
         });
     }
+
+    // Call the function to render the commits
+    renderGitHubCommits();
 });
