@@ -421,6 +421,7 @@
         .github-commit {
             display: flex;
             flex-direction: column;
+            gap: 0.5rem;
         }
 
         .commit-header {
