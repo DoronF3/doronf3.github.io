@@ -1,3 +1,187 @@
+class GitHubService {
+    constructor(username) {
+      this.username = username;
+      this.apiBase = 'https://api.github.com';
+      // Optional: Add your GitHub token for higher rate limits
+      this.token = null; // 'YOUR_GITHUB_TOKEN';
+    }
+  
+    /**
+     * Get the request headers for GitHub API calls
+     */
+    getHeaders() {
+      const headers = {
+        'Accept': 'application/vnd.github.v3+json'
+      };
+      
+      if (this.token) {
+        headers['Authorization'] = `token ${this.token}`;
+      }
+      
+      return headers;
+    }
+  
+    /**
+     * Get recent activity across all public repositories
+     */
+    async getUserActivity(maxEvents = 3) {
+      try {
+        const response = await fetch(`${this.apiBase}/users/${this.username}/events/public?per_page=${maxEvents}`, {
+          headers: this.getHeaders()
+        });
+        
+        if (!response.ok) {
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+        
+        const events = await response.json();
+        
+        // Filter only push events (commits)
+        const pushEvents = events.filter(event => event.type === 'PushEvent');
+        
+        // Extract commit information
+        const commits = [];
+        
+        pushEvents.forEach(event => {
+          const repoName = event.repo.name.split('/')[1];
+          
+          event.payload.commits.forEach(commit => {
+            commits.push({
+              repo: repoName,
+              hash: commit.sha.substring(0, 7),
+              title: commit.message.split('\n')[0],
+              message: commit.message,
+              date: new Date(event.created_at),
+              url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
+            });
+          });
+        });
+        
+        return commits;
+      } catch (error) {
+        console.error('Error fetching user activity:', error);
+        return [];
+      }
+    }
+  
+    /**
+     * Get the latest commits across all repositories
+     */
+    async getLatestCommits(limit = 3) {
+      try {
+        // Method 1: Use the events API (faster but limited to recent activity)
+        const activityCommits = await this.getUserActivity();
+        
+        if (activityCommits.length >= limit) {
+          return this.formatCommits(activityCommits, limit);
+        }
+        
+      } catch (error) {
+        console.error('Error fetching latest commits:', error);
+        return [];
+      }
+    }
+  
+    /**
+     * Format and sort the commits
+     */
+    formatCommits(commits, limit) {
+      // Sort by date (newest first)
+      const sortedCommits = commits.sort((a, b) => b.date - a.date);
+      
+      // Remove duplicates (same commit hash)
+      const uniqueCommits = [];
+      const seenHashes = new Set();
+      
+      for (const commit of sortedCommits) {
+        if (!seenHashes.has(commit.hash)) {
+          seenHashes.add(commit.hash);
+          
+          // Format the date for display
+          commit.formattedDate = commit.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+          
+          uniqueCommits.push(commit);
+          
+          if (uniqueCommits.length >= limit) {
+            break;
+          }
+        }
+      }
+      
+      return uniqueCommits;
+    }
+  }
+
+class LinkedInService {
+    constructor(username) {
+      this.username = username;
+      this.apiBase = 'https://api.linkedin.com/v2';
+      // In a real implementation, you would need OAuth tokens
+      this.accessToken = null; // 'YOUR_LINKEDIN_ACCESS_TOKEN';
+    }
+  
+    /**
+     * Get the request headers for LinkedIn API calls
+     */
+    getHeaders() {
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      
+      if (this.accessToken) {
+        headers['Authorization'] = `Bearer ${this.accessToken}`;
+      }
+      
+      return headers;
+    }
+  
+    /**
+     * Get recent LinkedIn posts
+     * Note: In a real implementation, this would make actual API calls
+     */
+    async getRecentPosts(limit = 3) {
+      try {
+        const response = await fetch(
+          `${this.apiBase}/ugcPosts?q=authors&authors=List(urn:li:person:${this.username})&count=${limit}`, 
+          { headers: this.getHeaders() }
+        );
+        
+        if (!response.ok) {
+          throw new Error(`LinkedIn API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return this.formatPosts(data.elements);
+    
+      } catch (error) {
+        console.error('Error fetching LinkedIn posts:', error);
+        return [];
+      }
+    }
+  
+    /**
+     * Format LinkedIn posts for display
+     */
+    formatPosts(posts) {
+      return posts.map(post => ({
+        content: post.content,
+        formattedDate: post.date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        likes: post.likes,
+        comments: post.comments,
+        url: post.url
+      }));
+    }
+}
+
 // Theme toggling functionality
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
@@ -152,39 +336,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', highlightActiveSection);
     
-    // GitHub commits data
-    const commits = [
-        {
-            repo: 'distributed-task-queue',
-            hash: 'a7e9f23',
-            title: 'Add Redis cluster support',
-            message: 'Implemented Redis cluster support for horizontal scaling with automatic sharding and failover capabilities.',
-            date: 'April 15, 2025',
-            url: '#'
-        },
-        {
-            repo: 'api-gateway',
-            hash: 'b2d4c18',
-            title: 'Optimize rate limiter',
-            message: 'Optimized the rate limiting middleware to reduce memory usage by 40% and improve throughput by implementing a sliding window algorithm.',
-            date: 'April 12, 2025',
-            url: '#'
-        },
-        {
-            repo: 'analytics-pipeline',
-            hash: 'e5f8d72',
-            title: 'Add Prometheus metrics',
-            message: 'Added comprehensive Prometheus metrics for better observability and alerting capabilities across the event processing pipeline.',
-            date: 'April 10, 2025',
-            url: '#'
+    // Initialize GitHub service
+    const githubService = new GitHubService('DoronF3'); // Replace with your GitHub username
+  
+    // Render GitHub commits
+    async function renderGitHubCommits() {
+        const githubGrid = document.querySelector('.github-grid');
+        const template = document.getElementById('commit-template');
+        
+        if (!template || !githubGrid) return;
+        
+        // Show loading state
+        githubGrid.innerHTML = '<div class="loading">Loading commits...</div>';
+        
+        try {
+        // Fetch latest commits across all public repositories
+        const commits = await githubService.getLatestCommits(3); // Get 3 latest commits
+        
+        // Clear loading state
+        githubGrid.innerHTML = '';
+        
+        if (commits.length === 0) {
+            githubGrid.innerHTML = '<div class="no-data">No recent GitHub activity found.</div>';
+            return;
         }
-    ];
-    
-    // Populate GitHub commits
-    const githubGrid = document.querySelector('.github-grid');
-    const template = document.getElementById('commit-template');
-    
-    if (template && githubGrid) {
+        
         // Create document fragment for better performance
         const fragment = document.createDocumentFragment();
         
@@ -194,8 +370,14 @@ document.addEventListener('DOMContentLoaded', function() {
             clone.querySelector('.commit-repo').textContent = commit.repo;
             clone.querySelector('.commit-hash').textContent = commit.hash;
             clone.querySelector('.commit-title').textContent = commit.title;
-            clone.querySelector('.commit-message').textContent = commit.message;
-            clone.querySelector('.commit-date').textContent = commit.date;
+            
+            // Limit commit message length with ellipsis if too long
+            const message = commit.message;
+            const charLimit = 120;
+            clone.querySelector('.commit-message').textContent = 
+            message.length > charLimit ? message.substring(0, charLimit) + '...' : message;
+            
+            clone.querySelector('.commit-date').textContent = commit.formattedDate;
             clone.querySelector('.card-link').href = commit.url;
             
             fragment.appendChild(clone);
@@ -203,6 +385,66 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Single DOM update for better performance
         githubGrid.appendChild(fragment);
+        } catch (error) {
+        githubGrid.innerHTML = '<div class="error">Failed to load GitHub commits. Please try again later.</div>';
+        console.error('Error rendering GitHub commits:', error);
+        }
+    }
+  
+    // Call the function to render the commits
+    renderGitHubCommits();
+
+    const linkedinPosts = [
+        {
+            content: "Excited to share that I've just completed optimizing our API gateway, resulting in a 40% reduction in memory usage and significantly improved throughput by implementing a sliding window algorithm for rate limiting.",
+            date: "April 13, 2025",
+            likes: 142,
+            comments: 28,
+            url: "#"
+        },
+        {
+            content: "Just published a deep dive on Redis cluster implementations for distributed task queues. Learn how we achieved horizontal scaling with automatic sharding and failover capabilities in our latest project.",
+            date: "April 8, 2025",
+            likes: 96,
+            comments: 15,
+            url: "#"
+        },
+        {
+            content: "Observability is key to maintaining reliable systems. I've recently added comprehensive Prometheus metrics to our analytics pipeline, enabling better monitoring and alerting. Here's what we learned in the process...",
+            date: "April 3, 2025",
+            likes: 118,
+            comments: 22,
+            url: "#"
+        }
+    ];
+
+    const linkedinGrid = document.querySelector('.linkedin-grid');
+    const linkedinTemplate = document.getElementById('linkedin-post-template');
+    
+    if (linkedinTemplate && linkedinGrid) {
+        // Create document fragment for better performance
+        const fragment = document.createDocumentFragment();
+        
+        linkedinPosts.forEach(post => {
+            const clone = document.importNode(linkedinTemplate.content, true);
+            
+            clone.querySelector('.linkedin-date').textContent = post.date;
+            
+            // Limit LinkedIn post content length with ellipsis if too long
+            const content = post.content;
+            const charLimit = 180;
+            clone.querySelector('.linkedin-content').textContent = 
+                content.length > charLimit ? content.substring(0, charLimit) + '...' : content;
+            
+            clone.querySelector('.likes-count').textContent = post.likes;
+            clone.querySelector('.comments-count').textContent = post.comments;
+            clone.querySelector('.linkedin-read-more a').href = post.url;
+            
+            fragment.appendChild(clone);
+        });
+        
+        // Single DOM update for better performance
+        linkedinGrid.appendChild(fragment);
     }
     
     // Form submission handling

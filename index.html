@@ -150,89 +150,45 @@
         <div class="container">
             <h2 class="section-title">Recent LinkedIn Posts</h2>
             <div class="linkedin-grid">
-                <!-- LinkedIn Post 1 -->
-                <div class="card linkedin-card">
-                    <div class="card-content">
-                        <div class="linkedin-header">
-                            <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
+                <!-- LinkedIn Posts Loop -->
+                <template id="linkedin-post-template">
+                    <div class="card linkedin-card">
+                        <div class="card-content">
+                            <div class="linkedin-header">
+                                <div class="linkedin-avatar">
+                                    <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
+                                </div>
+                                <div class="linkedin-info">
+                                    <div class="linkedin-name">Doron Firman</div>
+                                    <div class="linkedin-date"></div>
+                                </div>
                             </div>
-                            <div class="linkedin-info">
-                                <div class="linkedin-name">Doron Firman</div>
-                                <div class="linkedin-date">3 days ago</div>
+    
+                            <div class="linkedin-content-wrapper">
+                                <div class="linkedin-content"></div>
+                                <div class="linkedin-read-more">
+                                    <a href="#" target="_blank">
+                                        Read full post
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="linkedin-content">
-                            <p>Excited to share that I've just deployed a new microservice architecture that reduced our API response time by 60%! #BackendDevelopment #Performance #Microservices</p>
-                        </div>
-                        <div class="linkedin-stats">
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                                87
-                            </div>
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                23
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- LinkedIn Post 2 -->
-                <div class="card linkedin-card">
-                    <div class="card-content">
-                        <div class="linkedin-header">
-                            <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
-                            </div>
-                            <div class="linkedin-info">
-                                <div class="linkedin-name">Doron Firman</div>
-                                <div class="linkedin-date">1 week ago</div>
-                            </div>
-                        </div>
-                        <div class="linkedin-content">
-                            <p>Just published a technical deep dive on how we implemented distributed tracing across our microservices using OpenTelemetry. Check out the link in the comments! #DistributedSystems #Observability</p>
-                        </div>
-                        <div class="linkedin-stats">
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                                124
-                            </div>
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                36
+                            
+                            <div class="linkedin-stats">
+                                <div class="linkedin-stat">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                                    <span class="likes-count"></span>
+                                </div>
+                                <div class="linkedin-stat">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                                    <span class="comments-count"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- LinkedIn Post 3 -->
-                <div class="card linkedin-card">
-                    <div class="card-content">
-                        <div class="linkedin-header">
-                            <div class="linkedin-avatar">
-                                <img src="my-image.jpg" alt="Profile Picture" loading="lazy">
-                            </div>
-                            <div class="linkedin-info">
-                                <div class="linkedin-name">Doron Firman</div>
-                                <div class="linkedin-date">2 weeks ago</div>
-                            </div>
-                        </div>
-                        <div class="linkedin-content">
-                            <p>I'll be speaking at the Backend Engineering Summit next month about building fault-tolerant systems. Looking forward to sharing some of the lessons we've learned the hard way! #FaultTolerance #Resilience #Engineering</p>
-                        </div>
-                        <div class="linkedin-stats">
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
-                                156
-                            </div>
-                            <div class="linkedin-stat">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                                42
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </template>
             </div>
         </div>
     </section>

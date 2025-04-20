@@ -286,6 +286,7 @@
 
         .card-content {
             padding: 1.5rem;
+            height: 100%;
         }
 
         .card-title {
@@ -360,6 +361,8 @@
         .linkedin-card {
             display: flex;
             flex-direction: column;
+            height: 100%; /* Make card take full height of grid cell */
+            justify-content: space-between; /* Push content to top and stats to bottom */
         }
 
         .linkedin-header {
@@ -397,6 +400,7 @@
 
         .linkedin-content {
             margin-bottom: 1rem;
+            overflow: hidden; /* Prevents content from breaking layout */
         }
 
         .linkedin-stats {
