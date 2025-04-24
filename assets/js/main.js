@@ -324,59 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error rendering GitHub commits:', error);
         }
     }
-
-    const linkedinPosts = [
-        {
-            content: "Excited to share that I've just completed optimizing our API gateway, resulting in a 40% reduction in memory usage and significantly improved throughput by implementing a sliding window algorithm for rate limiting.",
-            date: "April 13, 2025",
-            likes: 142,
-            comments: 28,
-            url: "#"
-        },
-        {
-            content: "Just published a deep dive on Redis cluster implementations for distributed task queues. Learn how we achieved horizontal scaling with automatic sharding and failover capabilities in our latest project.",
-            date: "April 8, 2025",
-            likes: 96,
-            comments: 15,
-            url: "#"
-        },
-        {
-            content: "Observability is key to maintaining reliable systems. I've recently added comprehensive Prometheus metrics to our analytics pipeline, enabling better monitoring and alerting. Here's what we learned in the process...",
-            date: "April 3, 2025",
-            likes: 118,
-            comments: 22,
-            url: "#"
-        }
-    ];
-
-    const linkedinGrid = document.querySelector('.linkedin-grid');
-    const linkedinTemplate = document.getElementById('linkedin-post-template');
-    
-    if (linkedinTemplate && linkedinGrid) {
-        // Create document fragment for better performance
-        const fragment = document.createDocumentFragment();
-        
-        linkedinPosts.forEach(post => {
-            const clone = document.importNode(linkedinTemplate.content, true);
-            
-            clone.querySelector('.linkedin-date').textContent = post.date;
-            
-            // Limit LinkedIn post content length with ellipsis if too long
-            const content = post.content;
-            const charLimit = 180;
-            clone.querySelector('.linkedin-content').textContent = 
-                content.length > charLimit ? content.substring(0, charLimit) + '...' : content;
-            
-            clone.querySelector('.likes-count').textContent = post.likes;
-            clone.querySelector('.comments-count').textContent = post.comments;
-            clone.querySelector('.linkedin-read-more a').href = post.url;
-            
-            fragment.appendChild(clone);
-        });
-        
-        // Single DOM update for better performance
-        linkedinGrid.appendChild(fragment);
-    }
     
     // Form submission handling
     const contactForm = document.getElementById('contactForm');

@@ -174,7 +174,6 @@
             font-size: 1.25rem;
             max-width: 700px;
             margin: 0 auto;
-            color: var(--secondary);
         }
 
         .btn {
@@ -356,66 +355,6 @@
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
-        }
-
-        .linkedin-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%; /* Make card take full height of grid cell */
-            justify-content: space-between; /* Push content to top and stats to bottom */
-        }
-
-        .linkedin-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .linkedin-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-        }
-
-        .linkedin-avatar img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .linkedin-info {
-            flex: 1;
-        }
-
-        .linkedin-name {
-            font-weight: 600;
-        }
-
-        .linkedin-date {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .linkedin-content {
-            margin-bottom: 1rem;
-            overflow: hidden; /* Prevents content from breaking layout */
-        }
-
-        .linkedin-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: var(--gray);
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .linkedin-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
         }
 
         .github-commit {
