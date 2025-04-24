@@ -1,0 +1,95 @@
+@media (max-width: 768px) {
+    /* Header and navigation */
+    .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hamburger-menu:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        flex-direction: column;
+        background-color: var(--header-bg);
+        width: 60%;
+        height: 100vh;
+        padding: 5.5rem 1.5rem 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        padding: 0.5rem 0;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .theme-toggle {
+        margin: 1.5rem auto 0;
+        align-self: center;
+    }
+    
+    /* Prevent body scrolling when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    /* Project grid responsiveness */
+    .projects-grid, 
+    .github-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* About section responsiveness */
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Hero section responsive adjustments */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .card-content {
+        padding: 1.25rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+}
