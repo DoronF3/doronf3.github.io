@@ -1,36 +1,33 @@
 // Projects data
 const projectsData = [
     {
-      title: "Distributed Task Queue",
-      description: "A high-performance distributed task queue system built with Go, supporting job prioritization and fault tolerance.",
-      image: "/api/placeholder/400/200",
-      imageAlt: "Distributed Task Queue architecture diagram",
-      tags: ["Go", "Redis", "Distributed Systems"],
+      title: "Loan Performance Analysis System",
+      description: "A comprehensive financial analytics platform that analyzes lending data, calculates default rates, and models prepayment behavior using statistical distributions.",
+      image: "assets/img/loanImage.webp",
+      imageAlt: "Financial analytics dashboard showing loan performance metrics",
+      tags: ["Python", "Pandas", "Data Visualization", "Financial Analytics"],
       links: [
-        { text: "Demo", url: "#", type: "demo" },
-        { text: "GitHub", url: "#", type: "github" }
+        { text: "GitHub", url: "https://github.com/DoronF3/School-Projects/tree/main/Financial%20Analytics/Ex4", type: "github" },
       ]
     },
     {
-      title: "E-commerce API Gateway",
-      description: "A scalable API gateway that handles authentication, rate limiting, and request routing for a microservices-based e-commerce platform.",
-      image: "/api/placeholder/400/200",
-      imageAlt: "API Gateway flow diagram",
-      tags: ["Node.js", "Express", "MongoDB"],
+      title: "Dynamic GitHub Profile README",
+      description: "An automated GitHub workflow that updates my profile README with real-time weather data for Modi'in, Israel using Python and the OpenWeatherMap API. The workflow runs every 3 hours to show current weather conditions, sunrise/sunset times, and automatically tracks refresh timestamps.",
+      image: "assets/img/gitProfileImage.webp",
+      imageAlt: "GitHub Actions workflow diagram showing weather data integration",
+      tags: ["Python", "GitHub Actions", "API Integration", "Automation"],
       links: [
-        { text: "Case Study", url: "#", type: "case-study" },
-        { text: "GitHub", url: "#", type: "github" }
+        { text: "GitHub", url: "https://github.com/DoronF3/DoronF3", type: "github" },
       ]
     },
     {
-      title: "Real-time Analytics Pipeline",
-      description: "An event-driven analytics pipeline processing millions of events daily, with real-time dashboarding capabilities.",
-      image: "/api/placeholder/400/200",
-      imageAlt: "Analytics dashboard screenshot",
-      tags: ["Python", "Kafka", "Elasticsearch"],
+      title: "Wildfire Cause Prediction",
+      description: "An advanced machine learning project using neural networks to predict wildfire causes based on geographical, temporal, and climate features. The model incorporates feature engineering techniques like cyclic time encoding, climate data integration, and uses a sophisticated architecture with batch normalization and dropout layers to achieve high prediction accuracy.",
+      image: "assets/img/wildfireIamge.webp",
+      imageAlt: "Neural network diagram showing wildfire prediction model architecture",
+      tags: ["Python", "TensorFlow", "Neural Networks", "Jupyter", "Data Science", "Climate Data"],
       links: [
-        { text: "Documentation", url: "#", type: "docs" },
-        { text: "GitHub", url: "#", type: "github" }
+        { text: "GitHub", url: "https://github.com/DoronF3/School-Projects/blob/main/Machine%20Learning/Ml%20Final/ML%20Final%20Project.ipynb", type: "github" },
       ]
     }
   ];

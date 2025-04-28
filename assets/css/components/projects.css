@@ -16,3 +16,8 @@
     height: 100%;
     object-fit: cover;
 }
+
+.project-description {
+    margin-bottom: 1.5rem; /* Fixed spacing between description and footer elements */
+    flex-grow: 1; /* This allows the description to take up available space */
+}
