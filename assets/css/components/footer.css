@@ -1,24 +1,205 @@
+/* assets/css/components/footer.css */
+
 footer {
     background-color: var(--header-bg);
     color: var(--header-text);
-    padding: 2rem 0;
-    text-align: center;
+    padding: 4rem 0 2rem;
+    position: relative;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
+/* Add subtle wave pattern to footer top */
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(135deg, var(--header-bg) 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, var(--header-bg) 25%, transparent 25%) -10px 0,
+                linear-gradient(315deg, var(--header-bg) 25%, transparent 25%),
+                linear-gradient(45deg, var(--header-bg) 25%, transparent 25%);
+    background-size: 20px 20px;
+    background-color: transparent;
 }
 
-.social-link {
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Brand section */
+.footer-brand h3 {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.footer-tagline {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+    max-width: 250px;
+}
+
+/* Section headings */
+.footer-content h4 {
+    font-size: 1.2rem;
+    margin: 0 0 1.25rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.footer-content h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* Navigation and lists */
+.footer-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-content ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-content ul li a {
     color: var(--header-text);
-    font-size: 1.5rem;
-    transition: color 0.3s;
     text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
 }
 
-.social-link:hover {
-    color: var(--primary);
+.footer-content ul li a::before {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-content ul li a:hover {
+    color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+.footer-content ul li a:hover::before {
+    opacity: 1;
+    left: -20px;
+}
+
+.footer-email, .footer-location {
+    display: flex;
+    align-items: center;
+}
+
+.footer-location {
+    opacity: 0.8;
+}
+
+/* Social icons */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--header-text);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.4);
+}
+
+/* Footer bottom */
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-links a {
+    color: var(--header-text);
+    opacity: 0.7;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.footer-divider {
+    opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-content h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
 }

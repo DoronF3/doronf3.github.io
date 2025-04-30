@@ -1,15 +1,75 @@
+/* Hero Section Styling - assets/css/components/hero.css */
+
 .hero {
     padding: 5rem 0;
     text-align: center;
 }
 
+/* Animated Title */
 .hero h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto 1rem;
+    animation: typing 3.5s steps(30, end), 
+               blink-caret 0.75s step-end infinite,
+               highlight 1s ease-in-out 3.5s forwards;
+    border-right: 0.15em solid var(--text-color);
 }
 
 .hero p {
     font-size: 1.25rem;
     max-width: 700px;
     margin: 0 auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 2.5s forwards;
+}
+
+.hero .btn {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 3.5s forwards;
+}
+
+/* Animation Keyframes */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--text-color) }
+}
+
+@keyframes highlight {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(var(--primary-rgb), 0.2); }
+    100% { 
+        background-color: transparent;
+        border-right: none;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+        white-space: normal;
+        animation: fadeIn 1.5s ease-in-out forwards;
+        border-right: none;
+    }
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
 }
