@@ -1,26 +1,26 @@
 [
   {
     "repo": "doronf3.github.io",
-    "hash": "fe68766",
-    "message": "updated yml",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/fe68766913a1b044ddefa2080ddbecfd1d90daf8",
-    "date": "2025-05-01T14:55:23.000Z",
+    "hash": "d5a7748",
+    "message": "updated readme",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/d5a7748de3c070c1f109b27a4bf907eaf3e80942",
+    "date": "2025-05-01T15:57:47.000Z",
     "formattedDate": "May 1, 2025"
   },
   {
     "repo": "doronf3.github.io",
-    "hash": "d455911",
-    "message": "added git workflow to update commits",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/d4559119062ba1f342303ece10b931383f7a60a0",
-    "date": "2025-05-01T14:53:37.000Z",
+    "hash": "3bd1a8a",
+    "message": "Merge branch 'main' of https://github.com/DoronF3/doronf3.github.io",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/3bd1a8ac68024fc893d6683fa4ce1ce6ff20fe1a",
+    "date": "2025-05-01T15:57:47.000Z",
     "formattedDate": "May 1, 2025"
   },
   {
     "repo": "doronf3.github.io",
-    "hash": "f653a1c",
-    "message": "updated project strcture readme",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/f653a1c4799087b26f914d6809c71a0a254ad085",
-    "date": "2025-05-01T14:45:17.000Z",
+    "hash": "1d06311",
+    "message": "made components js into an es module",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/1d06311996cf91a0c92e71def742336dbd93fe6c",
+    "date": "2025-05-01T15:54:11.000Z",
     "formattedDate": "May 1, 2025"
   }
 ]
