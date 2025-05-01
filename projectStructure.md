@@ -56,8 +56,6 @@
 │   ├── header.html         - Header with navigation
 │   ├── hero.html           - Hero section
 │   └── projects.html       - Projects section with card templates
-├── services/
-│   └── git.service.js      - GitHub API integration service
 ├── 404.html                - Custom 404 error page (terminal-style)
 ├── _config.yml             - Configuration file (empty)
 ├── index.html              - Main HTML entry point
