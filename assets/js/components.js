@@ -1,4 +1,6 @@
-// Function to load HTML components
+// components.js
+import { initializeScripts } from './main.js';
+
 async function loadComponent(elementId, componentPath) {
     try {
         const response = await fetch(componentPath);
@@ -12,11 +14,9 @@ async function loadComponent(elementId, componentPath) {
     }
 }
 
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Loading components...');
     
-    // Load all components
     await Promise.all([
         loadComponent('header-component', './components/header.html'),
         loadComponent('hero-component', './components/hero.html'),
@@ -26,18 +26,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('contact-component', './components/contact.html'),
         loadComponent('footer-component', './components/footer.html')
     ]);
-    
+
     console.log('All components loaded!');
-    
-    // Initialize scripts from main.js after components are loaded
-    if (window.initializeScripts) {
-        window.initializeScripts();
-    } else {
-        console.error('initializeScripts function not found');
-    }
+    await initializeScripts();
 });
 
-// Initialize theme from localStorage on page load
+// Restore theme
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
