@@ -127,7 +127,7 @@ npx live-server
 ---
 
 <p align="center">
-    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/DoronF3/doronf3.github.io/update-commits.yml?style=for-the-badge&amp;logo=github-actions&amp;label=GitHub Activity">
+    <img alt="GitHub Actions Workflow Status" src="https://github.com/DoronF3/doronf3.github.io/workflows/Update%20Latest%20Commits/badge.svg">
 </p>
 
 <p align="center">
