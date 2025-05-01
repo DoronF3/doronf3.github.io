@@ -18,5 +18,5 @@ window.initializeScripts = function() {
     // Initialize GitHub service and render commits
     const githubService = new GitHubService('DoronF3');
     renderProjects();
-    renderGitHubCommits(githubService);
+    renderGitHubCommits();
 };

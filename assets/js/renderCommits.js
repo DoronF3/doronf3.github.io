@@ -1,11 +1,16 @@
-export async function renderGitHubCommits(githubService) {
+export async function renderGitHubCommits() {
     const grid = document.querySelector('.github-grid');
     const template = document.getElementById('commit-template');
     if (!grid || !template) return;
 
     grid.innerHTML = '<div class="loading">Loading commits...</div>';
+    
     try {
-        const commits = await githubService.getLatestCommits(3);
+        // Load commits from the pre-generated JSON file instead of using githubService
+        const response = await fetch('./assets/js/data/commits.json');
+        if (!response.ok) throw new Error('Failed to load commits data');
+        
+        const commits = await response.json();
         grid.innerHTML = '';
 
         if (!commits.length) {
