@@ -6,11 +6,9 @@ permissions:
 on:
   schedule:
     - cron: '0 */3 * * *'  # Runs every 3 hours
-  # Allow manual triggering
-  workflow_dispatch:
-  # Optional: Update on every push to main branch
-  push:
+  push:  # Trigger on every push
     branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   update-commits:
