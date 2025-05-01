@@ -1,5 +1,8 @@
 name: Update Latest Commits
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     # Runs at 00:00 UTC every day
