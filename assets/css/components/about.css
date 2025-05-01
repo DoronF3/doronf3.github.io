@@ -1,10 +1,12 @@
+/* === About Section Layout === */
 .about-content {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
-    flex-wrap: wrap;
 }
 
+/* === About Image Section === */
 .about-img {
     flex: 1;
     min-width: 300px;
@@ -16,11 +18,13 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* === About Text Section === */
 .about-text {
     flex: 2;
     min-width: 300px;
 }
 
+/* === Skills Section === */
 .skills {
     margin-top: 2rem;
 }

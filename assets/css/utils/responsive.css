@@ -1,5 +1,9 @@
+/* Media Queries */
+
+/* For devices max-width 768px (tablets and smaller devices) */
 @media (max-width: 768px) {
-    /* Header and navigation */
+
+    /* Header and Navigation */
     .hamburger-menu {
         display: flex;
         align-items: center;
@@ -16,7 +20,7 @@
         top: 0;
         flex-direction: column;
         background-color: var(--header-bg);
-        width: 60%;
+        width: 45%;
         height: 100vh;
         padding: 5.5rem 1.5rem 1.5rem;
         transition: right 0.3s ease;
@@ -48,13 +52,13 @@
         overflow: hidden;
     }
     
-    /* Project grid responsiveness */
+    /* Project Grid Responsiveness */
     .projects-grid, 
     .github-grid {
         grid-template-columns: 1fr;
     }
     
-    /* About section responsiveness */
+    /* About Section Responsiveness */
     .about-content {
         flex-direction: column;
     }
@@ -65,7 +69,7 @@
         margin: 0 auto;
     }
     
-    /* Hero section responsive adjustments */
+    /* Hero Section Responsive Adjustments */
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -75,20 +79,25 @@
     }
 }
 
-/* Small mobile devices */
+/* For very small devices max-width 480px (mobile devices) */
 @media (max-width: 480px) {
+
+    /* Hero Section */
     .hero h1 {
         font-size: 2rem;
     }
     
+    /* Section Titles */
     .section-title {
         font-size: 1.75rem;
     }
     
+    /* Card Content */
     .card-content {
         padding: 1.25rem;
     }
     
+    /* Contact Form */
     .contact-form {
         padding: 1.5rem;
     }

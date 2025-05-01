@@ -1,38 +1,42 @@
+/* === Card Container === */
 .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
+/* === Card Content === */
 .card-content {
-    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* Structure: title, description (flexible space), tags, links */
+    padding: 1.5rem;
+    /* Structure: title, description (flex), tags, links */
 }
 
+/* === Title === */
 .card-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
 
+/* === Tags Section === */
 .card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem; /* Fixed spacing between tags and links */
-    margin-top: auto; /* This pushes the tags down when there's extra space */
+    margin-top: auto;        /* Pushes tags to the bottom */
+    margin-bottom: 1rem;     /* Space between tags and links */
 }
 
 .card-tag {
@@ -42,16 +46,17 @@
     font-size: 0.8rem;
 }
 
+/* === Links Section === */
 .card-links {
     display: flex;
     gap: 1rem;
 }
 
 .card-link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
 }

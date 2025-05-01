@@ -19,6 +19,7 @@
     border-right: 0.15em solid var(--text-color);
 }
 
+/* Hero Section Paragraph Styling */
 .hero p {
     font-size: 1.25rem;
     max-width: 700px;
@@ -27,22 +28,27 @@
     animation: fadeIn 1s ease-in-out 2.5s forwards;
 }
 
+/* Hero Section Button Styling */
 .hero .btn {
     opacity: 0;
     animation: fadeIn 1s ease-in-out 3.5s forwards;
 }
 
 /* Animation Keyframes */
+
+/* Typing Animation */
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from { width: 0; }
+    to { width: 100%; }
 }
 
+/* Caret Blink Animation */
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--text-color) }
+    from, to { border-color: transparent; }
+    50% { border-color: var(--text-color); }
 }
 
+/* Highlight Animation for Title */
 @keyframes highlight {
     0% { background-color: transparent; }
     50% { background-color: rgba(var(--primary-rgb), 0.2); }
@@ -52,12 +58,15 @@
     }
 }
 
+/* Fade In Animation for Elements */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media query for smaller screens */
+/* Media Queries for Responsive Design */
+
+/* For tablets and smaller devices */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -67,7 +76,7 @@
     }
 }
 
-/* Media query for very small screens */
+/* For very small devices (phones) */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;

@@ -1,9 +1,11 @@
+/* Projects Grid Styling */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatically adjust columns based on screen width */
     gap: 2rem;
 }
 
+/* Project Image Styling */
 .project-img {
     width: 100%;
     height: 200px;
@@ -11,18 +13,20 @@
     position: relative;
 }
 
+/* Ensure the image covers the project image area */
 .project-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Project Description Styling */
 .project-description {
     margin-bottom: 1.5rem; /* Fixed spacing between description and footer elements */
     flex-grow: 1; /* This allows the description to take up available space */
 }
 
-/* Container for the "View More" button centered below project grid */
+/* Container for the "View More" Button */
 .view-more-container {
     width: 100%;
     display: flex;
@@ -30,7 +34,7 @@
     margin-top: 3rem;
 }
 
-/* Base styling for the animated button */
+/* Base Styling for the Animated "View More" Button */
 .view-more-btn {
     position: relative;
     display: inline-flex;
@@ -50,7 +54,7 @@
     min-width: 200px;
 }
 
-/* Create the arrow icon with CSS */
+/* Create the Arrow Icon with CSS */
 .view-more-btn::after {
     content: "→";
     position: relative;
@@ -60,7 +64,7 @@
     transition: transform 0.3s ease;
 }
 
-/* Background animation effect */
+/* Background Animation Effect */
 .view-more-btn::before {
     content: "";
     position: absolute;
@@ -74,33 +78,33 @@
     z-index: -1;
 }
 
-/* Hover effects */
+/* Hover Effects */
 .view-more-btn:hover {
-    color: var(--bg-color);
-    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.4);
+    color: var(--bg-color); /* Change text color on hover */
+    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.4); /* Add shadow on hover */
 }
 
 .view-more-btn:hover::before {
-    transform: translateX(0);
+    transform: translateX(0); /* Animate background on hover */
 }
 
 .view-more-btn:hover::after {
-    transform: translateX(5px);
+    transform: translateX(5px); /* Animate arrow on hover */
 }
 
-/* Focus styles for accessibility */
+/* Focus Styles for Accessibility */
 .view-more-btn:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.5);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.5); /* Add a glow effect on focus */
 }
 
-/* Active state */
+/* Active State */
 .view-more-btn:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.3);
+    transform: translateY(2px); /* Add slight depression effect on click */
+    box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.3); /* Add shadow on click */
 }
 
-/* Pulse animation to draw attention */
+/* Pulse Animation to Draw Attention */
 @keyframes pulse {
     0% {
         box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
@@ -113,12 +117,12 @@
     }
 }
 
-/* Apply pulse animation when page loads */
+/* Apply Pulse Animation When Page Loads */
 .view-more-btn.pulse {
     animation: pulse 2s infinite;
 }
 
-/* Remove animation after hover to avoid distraction */
+/* Remove Pulse Animation on Hover to Avoid Distraction */
 .view-more-btn.pulse:hover {
     animation: none;
 }
