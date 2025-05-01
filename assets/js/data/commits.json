@@ -1,6 +1,14 @@
 [
   {
     "repo": "doronf3.github.io",
+    "hash": "fe68766",
+    "message": "updated yml",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/fe68766913a1b044ddefa2080ddbecfd1d90daf8",
+    "date": "2025-05-01T14:55:23.000Z",
+    "formattedDate": "May 1, 2025"
+  },
+  {
+    "repo": "doronf3.github.io",
     "hash": "d455911",
     "message": "added git workflow to update commits",
     "url": "https://github.com/DoronF3/doronf3.github.io/commit/d4559119062ba1f342303ece10b931383f7a60a0",
@@ -13,14 +21,6 @@
     "message": "updated project strcture readme",
     "url": "https://github.com/DoronF3/doronf3.github.io/commit/f653a1c4799087b26f914d6809c71a0a254ad085",
     "date": "2025-05-01T14:45:17.000Z",
-    "formattedDate": "May 1, 2025"
-  },
-  {
-    "repo": "doronf3.github.io",
-    "hash": "5d361b3",
-    "message": "fixed footer mobile misalignment",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/5d361b3ae0fc2a55d054bd16a92dfa494f089ebc",
-    "date": "2025-05-01T14:44:57.000Z",
     "formattedDate": "May 1, 2025"
   }
 ]
