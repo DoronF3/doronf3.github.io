@@ -1,4 +1,3 @@
-import { GitHubService } from '../../services/git.service.js';
 import { initThemeToggle } from './theme.js';
 import { initMobileMenu } from './mobileMenu.js';
 import { initScrollHighlight } from './scrollHighlights.js';
@@ -6,7 +5,7 @@ import { renderGitHubCommits } from './renderCommits.js';
 import { renderProjects } from './renderProjects.js';
 import { initContactForm } from './form.js';
 
-window.initializeScripts = function() {
+window.initializeScripts = async function() {
     console.log('Initializing scripts after components are loaded');
     
     // Initialize UI components
@@ -15,8 +14,7 @@ window.initializeScripts = function() {
     initScrollHighlight();
     initContactForm();
 
-    // Initialize GitHub service and render commits
-    const githubService = new GitHubService('DoronF3');
+    // Initialize projects and GitHub commits
     renderProjects();
-    renderGitHubCommits();
+    await renderGitHubCommits(); // Now using the pre-generated data
 };
