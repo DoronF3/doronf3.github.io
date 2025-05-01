@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/404.css"> <!-- Link to your CSS file -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - Resource Not Found</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/404.css" />
 </head>
 <body>
     <div class="container">
@@ -16,7 +18,7 @@
                 <div class="server-label">ERROR 404</div>
             </div>
         </div>
-        
+
         <div class="terminal">
             <div class="terminal-header">
                 <div class="terminal-buttons">
@@ -26,6 +28,7 @@
                 </div>
                 <div class="terminal-title">server:~ error-handler</div>
             </div>
+
             <div class="terminal-body">
                 <div class="command-line">
                     <span class="prompt">$</span>
@@ -34,22 +37,22 @@
                 <div class="response error-message">
                     Resource not found: The requested path does not exist.
                 </div>
-                
+
                 <div class="command-line">
                     <span class="prompt">$</span>
                     <span class="command">suggest-solution</span>
                 </div>
                 <div class="response">
-                    <span class="status-message">[ OPTIONS ]</span><br>
-                    • Check the URL<br>
-                    • Return to homepage<br>
+                    <span class="status-message">[ OPTIONS ]</span><br />
+                    • Check the URL<br />
+                    • Return to homepage<br />
                     • Try the navigation menu
                 </div>
-                
+
                 <div class="action-area">
                     <a href="/" class="action-link">Return to Main</a>
                 </div>
-                
+
                 <div class="command-line">
                     <span class="prompt">$</span>
                     <span class="command"></span>
@@ -58,27 +61,8 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        // Add some interactive terminal-like behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            const terminalBody = document.querySelector('.terminal-body');
-            const closeButton = document.querySelector('.button-close');
-            
-            // Make close button redirect to home
-            closeButton.addEventListener('click', function() {
-                window.location.href = '/';
-            });
-            
-            // Make the terminal respond to clicks by focusing
-            terminalBody.addEventListener('click', function() {
-                const cursorLine = document.querySelector('.cursor');
-                cursorLine.style.animation = 'none';
-                setTimeout(() => {
-                    cursorLine.style.animation = 'blink 1s infinite';
-                }, 10);
-            });
-        });
-    </script>
+
+    <!-- Scripts -->
+    <script src="./assets/js/404.js"></script>
 </body>
 </html>

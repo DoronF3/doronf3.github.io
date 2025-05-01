@@ -1,6 +1,7 @@
 export function initMobileMenu() {
     const toggle = document.getElementById('menu-toggle');
     const drawer = document.getElementById('nav-drawer');
+    const stickyHeader = document.querySelector('.sticky-header');
     if (!toggle || !drawer) return;
 
     const closeMenu = () => {
@@ -50,6 +51,40 @@ export function initMobileMenu() {
 
     document.addEventListener('click', (e) => {
         if (!drawer.contains(e.target) && !toggle.contains(e.target) && drawer.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+    
+    // Enhanced sticky header functionality
+    let lastScrollTop = 0;
+    
+    function handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add scrolled class when not at the top
+        if (scrollTop > 10) {
+            stickyHeader.classList.add('scrolled');
+        } else {
+            stickyHeader.classList.remove('scrolled');
+        }
+        
+        // Optional: Hide header when scrolling down, show when scrolling up
+        // Comment out these lines if you don't want the header to hide on scroll down
+        if (scrollTop > lastScrollTop && scrollTop > 200) {
+            stickyHeader.classList.add('header-hidden');
+        } else {
+            stickyHeader.classList.remove('header-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Handle resize event
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && drawer.classList.contains('active')) {
             closeMenu();
         }
     });
