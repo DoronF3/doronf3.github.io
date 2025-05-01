@@ -1,26 +1,26 @@
 [
   {
     "repo": "doronf3.github.io",
-    "hash": "efc290e",
-    "message": "added favicon",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/efc290eedb5922663d5179386a1e871e092ddb6e",
-    "date": "2025-05-01T14:42:58.000Z",
+    "hash": "d455911",
+    "message": "added git workflow to update commits",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/d4559119062ba1f342303ece10b931383f7a60a0",
+    "date": "2025-05-01T14:53:37.000Z",
     "formattedDate": "May 1, 2025"
   },
   {
     "repo": "doronf3.github.io",
-    "hash": "f1ba04f",
-    "message": "Fixed sticky header, added animation and reorganized css files",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/f1ba04f1bfda5aacff2e929f3ad559efd1006598",
-    "date": "2025-05-01T14:42:26.000Z",
+    "hash": "f653a1c",
+    "message": "updated project strcture readme",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/f653a1c4799087b26f914d6809c71a0a254ad085",
+    "date": "2025-05-01T14:45:17.000Z",
     "formattedDate": "May 1, 2025"
   },
   {
     "repo": "doronf3.github.io",
-    "hash": "6564cea",
-    "message": "fixed git card",
-    "url": "https://github.com/DoronF3/doronf3.github.io/commit/6564ceafa6eddbcc474108aa918e828269b45cfa",
-    "date": "2025-04-28T14:40:17.000Z",
-    "formattedDate": "April 28, 2025"
+    "hash": "5d361b3",
+    "message": "fixed footer mobile misalignment",
+    "url": "https://github.com/DoronF3/doronf3.github.io/commit/5d361b3ae0fc2a55d054bd16a92dfa494f089ebc",
+    "date": "2025-05-01T14:44:57.000Z",
+    "formattedDate": "May 1, 2025"
   }
 ]
