@@ -1,25 +1,25 @@
 [
   {
     "repo": "FECG",
+    "hash": "b45fa09",
+    "message": "connection worked",
+    "url": "https://github.com/yardenhaskin/FECG/commit/b45fa09b781cb0e3d32dd605c051417fa6c981c6",
+    "date": "2025-07-09T07:01:53.000Z",
+    "formattedDate": "July 9, 2025"
+  },
+  {
+    "repo": "FECG",
+    "hash": "550ef03",
+    "message": "added some todo comments",
+    "url": "https://github.com/yardenhaskin/FECG/commit/550ef030070901890383808bd4eb91fc6906783a",
+    "date": "2025-07-09T07:01:06.000Z",
+    "formattedDate": "July 9, 2025"
+  },
+  {
+    "repo": "FECG",
     "hash": "9448488",
     "message": "Merge pull request #7 from yardenhaskin/Doron/Backend\n\nfixed issue with deployment on gpu",
     "url": "https://github.com/yardenhaskin/FECG/commit/944848894c4988ab3040b22807d52edf102b9af4",
-    "date": "2025-07-07T09:48:30.000Z",
-    "formattedDate": "July 7, 2025"
-  },
-  {
-    "repo": "FECG",
-    "hash": "12bc714",
-    "message": "Merge pull request #8 from yardenhaskin/Doron/Backend\n\nchanged model loading based on user and changed documentation",
-    "url": "https://github.com/yardenhaskin/FECG/commit/12bc714ccb226a5a16b25391595008588cc20e47",
-    "date": "2025-07-07T09:48:30.000Z",
-    "formattedDate": "July 7, 2025"
-  },
-  {
-    "repo": "FECG",
-    "hash": "d93926c",
-    "message": "Merge pull request #9 from yardenhaskin/Doron/Backend\n\nDoron/backend",
-    "url": "https://github.com/yardenhaskin/FECG/commit/d93926ca142e40d0515df013e8ba4b255c570d96",
     "date": "2025-07-07T09:48:30.000Z",
     "formattedDate": "July 7, 2025"
   }
