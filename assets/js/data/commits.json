@@ -1,6 +1,14 @@
 [
   {
     "repo": "FECG",
+    "hash": "8146eae",
+    "message": "Added README for backend",
+    "url": "https://github.com/yardenhaskin/FECG/commit/8146eaea169dbf880ee927b47d6cf0a941512c5b",
+    "date": "2025-07-13T12:24:46.000Z",
+    "formattedDate": "July 13, 2025"
+  },
+  {
+    "repo": "FECG",
     "hash": "b45fa09",
     "message": "connection worked",
     "url": "https://github.com/yardenhaskin/FECG/commit/b45fa09b781cb0e3d32dd605c051417fa6c981c6",
@@ -14,13 +22,5 @@
     "url": "https://github.com/yardenhaskin/FECG/commit/550ef030070901890383808bd4eb91fc6906783a",
     "date": "2025-07-09T07:01:06.000Z",
     "formattedDate": "July 9, 2025"
-  },
-  {
-    "repo": "FECG",
-    "hash": "9448488",
-    "message": "Merge pull request #7 from yardenhaskin/Doron/Backend\n\nfixed issue with deployment on gpu",
-    "url": "https://github.com/yardenhaskin/FECG/commit/944848894c4988ab3040b22807d52edf102b9af4",
-    "date": "2025-07-07T09:48:30.000Z",
-    "formattedDate": "July 7, 2025"
   }
 ]
